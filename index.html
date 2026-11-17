@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0420" />
+  <meta name="description" content="استوديو الإبداع الذكي - منصة أوفلاين لإدارة الفيديو والصوت والصور" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <title>استوديو الإبداع الذكي</title>
+</head>
+<body>
+  <!-- Loader overlay -->
+  <div id="appLoader" class="app-loader" aria-hidden="true">
+    <div class="loader-spinner"></div>
+    <p>جاري التحميل...</p>
+  </div>
+
+  <!-- Header -->
+  <header class="app-header" role="banner">
+    <div class="brand">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="القائمة">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <defs>
+            <linearGradient id="logoG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00f0ff"/>
+              <stop offset="100%" stop-color="#ff00d4"/>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="8" fill="url(#logoG)" opacity="0.15"/>
+          <path d="M11 9 L23 16 L11 23 Z" fill="url(#logoG)"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>استوديو الإبداع الذكي</h1>
+        <span class="brand-sub">منصة أوفلاين للمحتوى الرقمي</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="status-pill" id="networkStatus" title="حالة الاتصال">
+        <span class="dot"></span>
+        <span id="networkLabel">أوفلاين</span>
+      </span>
+      <span class="status-pill" id="storagePill" title="المساحة المستخدمة">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+        <span id="storageLabel">0 م.ب</span>
+      </span>
+      <button class="btn btn-primary" id="installBtn" hidden>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        تثبيت التطبيق
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/hero.jpg" class="hero-svg" alt="بيئة صناعة المحتوى الرقمي" fetchpriority="high" decoding="async" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag">يعمل بدون إنترنت • قابل للتثبيت</span>
+      <h2>اصنع، حوّل، ونظّم محتواك الرقمي</h2>
+      <p>أوفلاين بالكامل: ارفع الفيديو، استخلص الصوت MP3، حمّل الصور، وتصفّح كل شيء في مشغّل داخلي أنيق.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" data-jump="section-video">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          ابدأ مع الفيديو
+        </button>
+        <button class="btn btn-ghost" data-jump="section-storage">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          تصفّح المخزن
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main navigation tabs -->
+  <nav class="tabs" role="tablist" aria-label="أقسام الاستوديو">
+    <button class="tab" data-section="direct" role="tab">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71"/></svg>
+      <span>رابط مباشر</span>
+    </button>
+    <button class="tab active" data-section="video" role="tab">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      <span>الفيديو</span>
+    </button>
+    <button class="tab" data-section="audio" role="tab">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <span>الصوت MP3</span>
+    </button>
+    <button class="tab" data-section="image" role="tab">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الصور</span>
+    </button>
+    <button class="tab" data-section="storage" role="tab">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>المخزن</span>
+    </button>
+  </nav>
+
+  <!-- Section: Direct media links -->
+  <section class="section hidden" id="section-direct" data-section-panel="direct">
+    <div class="section-head">
+      <h3>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.71-1.71"/></svg>
+        حفظ ملف وسائط من رابط مباشر
+      </h3>
+      <p>أدخل رابطاً مباشراً عاماً لملف فيديو أو صوت أو صورة تملك حق تنزيله. يجب أن يسمح الخادم بالوصول من المتصفح (CORS). لا يدعم صفحات المنصات أو الروابط المحمية، ولا يغيّر جودة المصدر.</p>
+    </div>
+    <form class="direct-link-form" id="directLinkForm">
+      <label for="directUrl">رابط الملف</label>
+      <div class="direct-link-controls">
+        <input id="directUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://example.com/media.mp4" required />
+        <button class="btn btn-primary" type="submit" id="directCheckBtn">فحص الرابط</button>
+      </div>
+      <small>الحد الأقصى 100 م.ب لكل ملف. التنزيل يتوقف إذا لم يكن الملف متاحاً أو رفض الخادم الطلب.</small>
+      <small>لمشاركة رابط من المتصفح: ثبّت التطبيق، ثم اختر «مشاركة» ← «استوديو الإبداع الذكي».</small>
+    </form>
+    <div class="direct-result hidden" id="directResult" aria-live="polite">
+      <h4 id="directFileName"></h4>
+      <p id="directFileMeta"></p>
+      <div class="direct-file-actions" id="directFileActions"></div>
+    </div>
+    <p class="direct-link-status" id="directLinkStatus" role="status" aria-live="polite"></p>
+  </section>
+
+  <!-- Section: Video -->
+  <section class="section" id="section-video" data-section-panel="video">
+    <div class="section-head">
+      <h3>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        رفع الفيديو واستعراضه
+      </h3>
+      <p>اسحب وأفلت ملف الفيديو، أو اختره يدوياً. سيُحفظ في المخزن المحلي تلقائياً.</p>
+    </div>
+    <div class="dropzone" id="videoDrop">
+      <input type="file" id="videoInput" accept="video/*" hidden />
+      <div class="dropzone-inner">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <h4>اسحب الفيديو هنا</h4>
+        <p>أو <button type="button" class="link-btn" id="videoPick">اختر ملفاً من جهازك</button></p>
+        <small>MP4, WebM, MOV — يُحفظ محلياً</small>
+      </div>
+    </div>
+    <div class="grid" id="videoGrid"></div>
+  </section>
+
+  <!-- Section: Audio extraction -->
+  <section class="section hidden" id="section-audio" data-section-panel="audio">
+    <div class="section-head">
+      <h3>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        استخلاص الصوت بصيغة MP3
+      </h3>
+      <p>حوّل الصوت من أي فيديو إلى ملف MP3 عالي الجودة باستخدام lamejs (كل شيء أوفلاين).</p>
+    </div>
+    <div class="dropzone" id="audioDrop">
+      <input type="file" id="audioInput" accept="video/*,audio/*" hidden />
+      <div class="dropzone-inner">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        <h4>اسحب فيديو أو صوت</h4>
+        <p>أو <button type="button" class="link-btn" id="audioPick">اختر ملفاً لاستخلاص MP3</button></p>
+        <small>MP3 • 128 kbps • معالجة محلية بالكامل</small>
+      </div>
+    </div>
+    <div class="extraction-status" id="extractionStatus" hidden>
+      <div class="progress-track"><div class="progress-bar" id="extractBar"></div></div>
+      <p id="extractLabel">جاري المعالجة...</p>
+    </div>
+    <div class="grid" id="audioGrid"></div>
+  </section>
+
+  <!-- Section: Image -->
+  <section class="section hidden" id="section-image" data-section-panel="image">
+    <div class="section-head">
+      <h3>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        تحميل وتنظيم الصور
+      </h3>
+      <p>ارفع صورك، حوّلها، أو حمّلها بصيغ مختلفة — كلها أوفلاين.</p>
+    </div>
+    <div class="dropzone" id="imageDrop">
+      <input type="file" id="imageInput" accept="image/*" multiple hidden />
+      <div class="dropzone-inner">
+        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <h4>اسحب الصور هنا</h4>
+        <p>أو <button type="button" class="link-btn" id="imagePick">اختر صوراً</button></p>
+        <small>JPG, PNG, WebP — يمكنك رفع أكثر من صورة</small>
+      </div>
+    </div>
+    <div class="grid" id="imageGrid"></div>
+  </section>
+
+  <!-- Section: Storage -->
+  <section class="section hidden" id="section-storage" data-section-panel="storage">
+    <div class="section-head">
+      <h3>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        المخزن المحلي
+      </h3>
+      <p>كل ملفاتك محفوظة في IndexedDB على هذا الجهاز. تصفّح، شغّل، شارك، أو احذف بكل سهولة.</p>
+    </div>
+    <div class="storage-toolbar">
+      <div class="filter-chips" role="tablist">
+        <button class="chip active" data-filter="all">الكل</button>
+        <button class="chip" data-filter="video">فيديو</button>
+        <button class="chip" data-filter="audio">صوت</button>
+        <button class="chip" data-filter="image">صور</button>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="storageSearch" placeholder="ابحث في المخزن..." />
+      </div>
+    </div>
+    <div class="grid" id="storageGrid"></div>
+    <div class="empty-state hidden" id="emptyState">
+      <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <h4>المخزن فارغ</h4>
+      <p>ابدأ برفع ملفاتك من الأقسام أعلاه.</p>
+    </div>
+  </section>
+
+  <!-- Player overlay -->
+  <div class="player-overlay hidden" id="playerOverlay" role="dialog" aria-modal="true" aria-label="مشغل الوسائط">
+    <div class="player-card">
+      <header class="player-head">
+        <h4 id="playerTitle">مشغل الوسائط</h4>
+        <button class="icon-btn" id="playerClose" aria-label="إغلاق">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </header>
+      <div class="player-body" id="playerBody"></div>
+      <div class="player-controls" id="playerControls">
+        <button class="icon-btn" id="playerPlay" aria-label="تشغيل/إيقاف">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        </button>
+        <div class="time-row">
+          <span id="playerCurrent">0:00</span>
+          <div class="seek-track" id="seekTrack"><div class="seek-fill" id="seekFill"></div></div>
+          <span id="playerDuration">0:00</span>
+        </div>
+        <div class="volume-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" id="playerVolume" min="0" max="100" value="80" />
+        </div>
+        <button class="icon-btn" id="playerShare" aria-label="مشاركة">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side action sidebar -->
+  <aside class="action-sidebar" id="actionSidebar" aria-label="إجراءات سريعة">
+    <div class="sidebar-head">
+      <h4 id="sidebarItemName">—</h4>
+      <button class="icon-btn" id="sidebarClose" aria-label="إغلاق">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="sidebar-preview" id="sidebarPreview"></div>
+    <div class="sidebar-meta" id="sidebarMeta"></div>
+    <div class="sidebar-actions">
+      <button class="action-tile" data-action="play">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        <span>تشغيل</span>
+      </button>
+      <button class="action-tile" data-action="share">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>مشاركة</span>
+      </button>
+      <button class="action-tile" data-action="download">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>حفظ في المعرض</span>
+      </button>
+      <button class="action-tile danger" data-action="delete">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        <span>حذف</span>
+      </button>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Toast container -->
+  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Confirm dialog -->
+  <div class="dialog hidden" id="confirmDialog" role="dialog" aria-modal="true">
+    <div class="dialog-card">
+      <h4 id="confirmTitle">تأكيد الإجراء</h4>
+      <p id="confirmMessage">هل أنت متأكد؟</p>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" id="confirmCancel">إلغاء</button>
+        <button class="btn btn-danger" id="confirmOk">نعم</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>استوديو الإبداع الذكي • Offline-First PWA • كل بياناتك على جهازك</p>
+  </footer>
+
+  <script src="lib/lame.min.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
