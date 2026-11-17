@@ -1,0 +1,79 @@
+{
+  "name": "استوديو الإبداع الذكي",
+  "short_name": "الإبداع الذكي",
+  "description": "منصة أوفلاين لإدارة المحتوى الرقمي: فيديو، صوت MP3، صور، مع مشغل داخلي ومشاركة فورية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "share_target": {
+    "action": "./index.html",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "orientation": "any",
+  "background_color": "#07031a",
+  "theme_color": "#0a0420",
+  "categories": ["photo", "music", "video", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/hero.jpg",
+      "sizes": "2720x1536",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "استوديو الإبداع الذكي"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "رفع فيديو",
+      "short_name": "فيديو",
+      "url": "./index.html#section-video",
+      "description": "انتقل إلى قسم الفيديو"
+    },
+    {
+      "name": "استخلاص MP3",
+      "short_name": "MP3",
+      "url": "./index.html#section-audio",
+      "description": "استخلص الصوت من الفيديو"
+    },
+    {
+      "name": "الصور",
+      "short_name": "صور",
+      "url": "./index.html#section-image",
+      "description": "تصفّح وحمّل الصور"
+    },
+    {
+      "name": "المخزن",
+      "short_name": "مخزن",
+      "url": "./index.html#section-storage",
+      "description": "تصفّح ملفاتك المحلية"
+    }
+  ]
+}
