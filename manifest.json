@@ -18,8 +18,8 @@
     }
   },
   "orientation": "any",
-  "background_color": "#07031a",
-  "theme_color": "#0a0420",
+  "background_color": "#071426",
+  "theme_color": "#071426",
   "categories": ["photo", "music", "video", "productivity"],
   "icons": [
     {

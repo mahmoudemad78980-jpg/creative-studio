@@ -3,7 +3,7 @@
    Strategy: cache-first for app shell, network-first
    for navigations with offline fallback
    ===================================================== */
-const CACHE_VERSION = 'cs-v1.7.0';
+const CACHE_VERSION = 'cs-v1.8.1';
 const APP_SHELL = [
   './',
   'index.html',

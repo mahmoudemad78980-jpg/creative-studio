@@ -291,7 +291,7 @@
       media.style.maxHeight = '70vh';
     } else if (kind === 'audio') {
       const wrap = el('div', { class: 'audio-wrap' });
-      const icon = el('div', { class: 'thumb-icon', html: '<svg viewBox="0 0 24 24" width="86" height="86" fill="none" stroke="#00f0ff" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>' });
+      const icon = el('div', { class: 'thumb-icon', html: '<svg viewBox="0 0 24 24" width="86" height="86" fill="none" stroke="#60a5fa" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>' });
       wrap.appendChild(icon);
       // Decorative equalizer bars (animate while playing)
       const eq = el('div', { class: 'eq' });
@@ -805,7 +805,7 @@
 
   // ----- PWA install + updates -----
   function setupPWA() {
-    PWA.setupInstallPrompt($('#installBtn'));
+    PWA.setupInstallPrompt();
     // Register the service worker so the app keeps working offline
     PWA.register().then((reg) => {
       if (reg) {
